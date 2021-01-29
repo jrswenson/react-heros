@@ -7,17 +7,17 @@ A repository to practice React
 ### Key concepts: 
 
 ---
-####Project layout/organization
+#### Project layout/organization
 
-####Prettier/js-linter 
-####Basic React/JSX
-####Routing
-####Basic Testing
-####Prop Drilling for State
+#### Prettier/js-linter 
+#### Basic React/JSX
+#### Routing
+#### Basic Testing
+#### Prop Drilling for State
 
 ---
 
-###Do the following
+### Do the following
 
 ---
 - Create project (This project will use prop drilling for state)
