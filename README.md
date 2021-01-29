@@ -1,8 +1,25 @@
 # react-heros
 A repository to practice React
 
-## Using Prop Drilling***
-### Key concepts: Project layout/organization, Prettier/js-linter Basic React/JSX, Routing, Basic Testing, Prop Drilling for State
+## Using Prop Drilling
+
+--- 
+### Key concepts: 
+
+---
+####Project layout/organization
+
+####Prettier/js-linter 
+####Basic React/JSX
+####Routing
+####Basic Testing
+####Prop Drilling for State
+
+---
+
+###Do the following
+
+---
 - Create project (This project will use prop drilling for state)
 - Create and configure API and Service to call API (Use json-server or actual REST server)
 	- Heros (GET, POST/PUT, DELETE)
