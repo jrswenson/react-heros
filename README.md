@@ -9,6 +9,7 @@ A repository to practice React
 ---
 #### Project layout/organization
 
+#### Environment Variables for different environments (Prod, Dev)
 #### Prettier/js-linter 
 #### Basic React/JSX
 #### Routing
