@@ -20,7 +20,9 @@ A repository to practice React
 ### Do the following
 
 ---
-- Create project (This project will use prop drilling for state)
+- Create project
+	- npx create-react-app {project_name}
+	- npx create-react-app . (This will create the React project in the current directory. This is helpful if you've already created the directory and initialized it as a Git repo)
 - Create and configure API and Service to call API (Use json-server or actual REST server)
 	- Heros (GET, POST/PUT, DELETE)
 	- Villians (GET, POST/PUT, DELETE)
