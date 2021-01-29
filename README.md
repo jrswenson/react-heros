@@ -25,13 +25,15 @@ A repository to practice React
 	- npx create-react-app . (This will create the React project in the current directory. This is helpful if you've already created the directory and initialized it as a Git repo)
 - Create and configure API and Service to call API (Use json-server or actual REST server)
 	- Heros (GET, POST/PUT, DELETE)
-	- Villians (GET, POST/PUT, DELETE)
-- Create HomePage (Simple list of Heros and Villians
+		- Heros have an ID, Name, and Description 
+	- Villains (GET, POST/PUT, DELETE)
+		- Villians have an ID, Name, and Description 
+- Create HomePage (Simple list of Heros and Villains)
 - Create HerosPage
 	- Components to:
 		- List Heros (Include delete from list)
 		- Add, Edit
-- Create VilliansPage 
+- Create VillainsPage 
 	- Components to:
 		- List Heros (Include delete from list)
 		- Add, Edit
