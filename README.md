@@ -38,6 +38,7 @@ A repository to practice React
 	- Add simple list of Villains
 - Add Routing to App
 	- Make Heros the default route
+	- Add a PageNotFound component and display it if a route is not found
 	- Verify routes work by manually entering routes
 - Create Header Component 
 	- Add links to use routing
