@@ -29,6 +29,9 @@ A repository to practice React
 		- Heros have an ID, Name, and Description 
 	- Villains (GET, POST/PUT, DELETE)
 		- Villians have an ID, Name, and Description 
+- Update App component
+	- Add simple list of Heros and Villains
+    	- Compare to **Simple_Home_Page** branch
 - Create HerosPage
 	- Add simple list of Heros
 - Create VillainsPage 
@@ -39,6 +42,7 @@ A repository to practice React
 - Create Header Component 
 	- Add links to use routing
 	- Change link color when active
+	- Compare to **Routing_Heroes_Villains** branch
 - Update HeroesPage
 	- Components to:
 		- List Heroes (Include delete from list)
@@ -47,4 +51,5 @@ A repository to practice React
 	- Components to:
 		- List Villains (Include delete from list)
 		- Add, Edit
+	- Compare to **CRUD_Heroes_Villains** branch
 - Testing...
