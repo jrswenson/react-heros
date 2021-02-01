@@ -1,4 +1,4 @@
-# react-heros
+# react-heroes
 A repository to practice React
 
 ## Using Prop Drilling
