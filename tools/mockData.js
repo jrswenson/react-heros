@@ -1,31 +1,31 @@
 const heroes = [
   {
-    id: "1",
+    id: "HeroAslaug",
     name: "Aslaug",
     description: "warrior queen",
   },
   {
-    id: "2",
+    id: "HeroBjorn",
     name: "Bjorn Ironside",
     description: "king of 9th century Sweden",
   },
   {
-    id: "3",
+    id: "HeroIvar",
     name: "Ivar the Boneless",
     description: "commander of the Great Heathen Army",
   },
   {
-    id: "4",
+    id: "HeroLagertha",
     name: "Lagertha the Shieldmaiden",
     description: "aka Hlaðgerðr",
   },
   {
-    id: "5",
+    id: "HeroRagnar",
     name: "Ragnar Lothbrok",
     description: "aka Ragnar Sigurdsson",
   },
   {
-    id: "6",
+    id: "HeroThora",
     name: "Thora Town-hart",
     description: "daughter of Earl Herrauðr of Götaland",
   },
@@ -33,22 +33,22 @@ const heroes = [
 
 const villains = [
   {
-    id: "30",
+    id: "VillainMadelyn",
     name: "Madelyn",
     description: "the cat whisperer",
   },
   {
-    id: "31",
+    id: "VillainHaley",
     name: "Haley",
     description: "pen wielder",
   },
   {
-    id: "32",
+    id: "VillainElla",
     name: "Ella",
     description: "fashionista",
   },
   {
-    id: "33",
+    id: "VillainLandon",
     name: "Landon",
     description: "Mandalorian mauler",
   },
