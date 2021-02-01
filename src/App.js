@@ -1,36 +1,28 @@
-import { useState, useEffect } from "react";
-import { getHeroes } from "./services/heroService";
-import { getVillains } from "./services/villainService";
+import { Switch, Route } from "react-router-dom";
+
+import HeroesPage from "./components/heroes/HeroesPage";
+import VillainsPage from "./components/villains/VillainsPage";
+import PageNotFound from "./PageNotFound";
+import Header from "./components/Header";
 
 function App() {
-  const [heroes, setHeroes] = useState([]);
-  const [villains, setVillains] = useState([]);
-
-  useEffect(() => {
-    if (heroes.length === 0) {
-      getHeroes().then((heroes) => setHeroes(heroes));
-    }
-
-    if (heroes.length === 0) {
-      getVillains().then((villains) => setVillains(villains));
-    }
-  });
-
   return (
     <div className="App">
-      <h1>Heroes</h1>
-      <ul>
-        {heroes.map((hero) => (
-          <li key={hero.id}>{hero.name}</li>
-        ))}
-      </ul>
-
-      <h1>Villains</h1>
-      <ul>
-        {villains.map((villain) => (
-          <li key={villain.id}>{villain.name}</li>
-        ))}
-      </ul>
+      <Header />
+      <Switch>
+        <Route path="/" exact>
+          <HeroesPage />
+        </Route>
+        <Route path="/heroes">
+          <HeroesPage />
+        </Route>
+        <Route path="/villains">
+          <VillainsPage />
+        </Route>
+        <Route>
+          <PageNotFound />
+        </Route>
+      </Switch>
     </div>
   );
 }
