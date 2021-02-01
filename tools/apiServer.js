@@ -73,14 +73,12 @@ server.listen(port, () => {
 
 // Centralized logic
 function validateHero(hero) {
-  if (!hero.id) return "Id is required.";
   if (!hero.name) return "Name is required.";
   if (!hero.description) return "Description is required.";
   return "";
 }
 
 function validateVillain(villain) {
-  if (!villain.id) return "Id is required.";
   if (!villain.name) return "Name is required.";
   if (!villain.description) return "Description is required.";
   return "";
