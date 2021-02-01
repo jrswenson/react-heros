@@ -53,4 +53,11 @@ A repository to practice React
 		- List Villains (Include delete from list)
 		- Add, Edit
 	- Compare to **CRUD_Heroes_Villains** branch
+- Add A Favorites Page
+	- Make this the default route
+	- Using Context, create a centralized list of favorite heroes and hated villains
+- Create a Progress bar or Spinner to display to the user the app is busy	
+	- Compare to **favorites-and-progress** branch
+	
+	
 - Testing...
