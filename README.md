@@ -29,9 +29,6 @@ A repository to practice React
 		- Heros have an ID, Name, and Description 
 	- Villains (GET, POST/PUT, DELETE)
 		- Villians have an ID, Name, and Description 
-- Create HomePage
-	- Add simple list of Heros and Villains
-	- Compare to Simple_Home_Page branch
 - Create HerosPage
 	- Add simple list of Heros
 - Create VillainsPage 
