@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
-import { getHeroes } from "../../services/heroService";
+import { getHeroes, deleteHero } from "../../services/heroService";
+import HeroList from "./HeroList";
+import { Link } from "react-router-dom";
 
 function HeroesPage() {
   const [heroes, setHeroes] = useState([]);
@@ -8,16 +10,19 @@ function HeroesPage() {
     if (heroes.length === 0) {
       getHeroes().then((heroes) => setHeroes(heroes));
     }
-  });
+  }, []);
+
+  function handleDelete(id) {
+    deleteHero(id).then((res) => {
+      getHeroes().then((heroes) => setHeroes(heroes));
+    });
+  }
 
   return (
     <>
       <h1>Heroes</h1>
-      <ul>
-        {heroes.map((hero) => (
-          <li key={hero.id}>{hero.name}</li>
-        ))}
-      </ul>
+      <Link to="/hero">Add Hero</Link>
+      <HeroList heroes={heroes} onDelete={handleDelete} />
     </>
   );
 }
