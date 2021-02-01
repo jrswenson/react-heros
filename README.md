@@ -33,16 +33,21 @@ A repository to practice React
 	- Add simple list of Heros and Villains
 	- Compare to Simple_Home_Page branch
 - Create HerosPage
-	- Components to:
-		- List Heros (Include delete from list)
-		- Add, Edit
+	- Add simple list of Heros
 - Create VillainsPage 
-	- Components to:
-		- List Heros (Include delete from list)
-		- Add, Edit
+	- Add simple list of Villains
 - Add Routing to App
+	- Make Heros the default route
 	- Verify routes work by manually entering routes
 - Create Header Component 
 	- Add links to use routing
 	- Change link color when active
+- Update HeroesPage
+	- Components to:
+		- List Heroes (Include delete from list)
+		- Add, Edit
+- Update VillainsPage 
+	- Components to:
+		- List Villains (Include delete from list)
+		- Add, Edit
 - Testing...
