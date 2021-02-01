@@ -1,8 +1,14 @@
-const TextInput = ({ name, value, onChange }) => {
+const TextInput = ({ id, name, title, value, onChange }) => {
   return (
     <div>
-      <label>{name}</label>
-      <input type="text" name={name} value={value} onChange={onChange} />
+      <label>{title}</label>
+      <input
+        type="text"
+        id={id}
+        name={name}
+        value={value}
+        onChange={onChange}
+      />
     </div>
   );
 };

@@ -10,10 +10,10 @@ function HeroesPage() {
     if (heroes.length === 0) {
       getHeroes().then((heroes) => setHeroes(heroes));
     }
-  }, []);
+  }, [heroes.length]);
 
   function handleDelete(id) {
-    deleteHero(id).then((res) => {
+    deleteHero(id).then(() => {
       getHeroes().then((heroes) => setHeroes(heroes));
     });
   }

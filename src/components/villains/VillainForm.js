@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import TextInput from "../common/TextInput";
 
-function HeroForm(props) {
-  const { hero, onChange, onSubmit } = props;
+function VillainForm(props) {
+  const { villain, onChange, onSubmit } = props;
 
   return (
     <form onSubmit={onSubmit}>
@@ -10,14 +10,14 @@ function HeroForm(props) {
         id="name"
         name="name"
         title="Name"
-        value={hero.name}
+        value={villain.name}
         onChange={onChange}
       />
       <TextInput
         id="description"
         name="description"
         title="Description"
-        value={hero.description}
+        value={villain.description}
         onChange={onChange}
       />
       <button type="submit">Save</button>
@@ -25,10 +25,10 @@ function HeroForm(props) {
   );
 }
 
-HeroForm.propTypes = {
-  hero: PropTypes.object.isRequired,
+VillainForm.propTypes = {
+  villain: PropTypes.object.isRequired,
   onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
 };
 
-export default HeroForm;
+export default VillainForm;
