@@ -1,6 +1,8 @@
 # react-heroes
 A repository to practice React
 
+The **main** only has README.md and .gitignore.  Only make changes to these to files on the **main** branch and do not add new files to *main*
+
 ## Using Prop Drilling
 
 --- 
@@ -53,7 +55,7 @@ A repository to practice React
 		- List Villains (Include delete from list)
 		- Add, Edit
 	- Compare to **CRUD_Heroes_Villains** branch
-- Add A Favorites Page
+- Add a Favorites Page
 	- Make this the default route
 	- Using Context, create a centralized list of favorite heroes and hated villains
 - Create a Progress bar or Spinner to display to the user the app is busy	
