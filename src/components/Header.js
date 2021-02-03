@@ -7,6 +7,10 @@ function Header() {
 
   return (
     <nav>
+      <NavLink to="/" activeStyle={activeStyle} exact>
+        Favorites
+      </NavLink>
+      {" | "}
       <NavLink to="/heroes" activeStyle={activeStyle}>
         Heroes
       </NavLink>

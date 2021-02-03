@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getHeroes, deleteHero } from "../../services/heroService";
 import HeroList from "./HeroList";
 import { Link } from "react-router-dom";
+import { FavoritesContext } from "../../context/FavoritesProvider";
 
 function HeroesPage() {
   const [heroes, setHeroes] = useState([]);
+  const { favoriteHeroes, addHero, removeHero } = useContext(FavoritesContext);
 
   useEffect(() => {
     if (heroes.length === 0) {
@@ -22,7 +24,13 @@ function HeroesPage() {
     <>
       <h1>Heroes</h1>
       <Link to="/hero">Add Hero</Link>
-      <HeroList heroes={heroes} onDelete={handleDelete} />
+      <HeroList
+        heroes={heroes}
+        favorites={favoriteHeroes}
+        onDelete={handleDelete}
+        addFavorite={addHero}
+        removeFavorite={removeHero}
+      />
     </>
   );
 }
