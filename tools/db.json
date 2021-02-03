@@ -2,17 +2,17 @@
   "heroes": [
     {
       "id": "HeroAslaug",
-      "name": "Aslaug ddd",
+      "name": "Aslaug",
       "description": "warrior queen"
     },
     {
       "id": "HeroBjorn",
-      "name": "Bjorn Ironside sss",
+      "name": "Bjorn Ironside",
       "description": "king of 9th century Sweden"
     },
     {
       "id": "HeroIvar",
-      "name": "Ivar the Boneless x",
+      "name": "Ivar the Boneless",
       "description": "commander of the Great Heathen Army"
     },
     {

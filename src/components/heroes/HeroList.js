@@ -35,7 +35,7 @@ function row({
   addFavorite,
   removeFavorite,
 }) {
-  const checked = favorites.find((f) => f.id === id);
+  const checked = !!favorites.find((f) => f.id === id);
   return (
     <tr key={id}>
       <td>
