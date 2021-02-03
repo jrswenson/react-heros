@@ -10,6 +10,7 @@ const FavoriteList = ({ listName, listUrl, favorites, remove, clear }) => {
       <ul style={{ listStyleType: "none" }}>
         {favorites.map((h) => (
           <FavoriteItem
+            key={h.id}
             listUrl={listUrl}
             id={h.id}
             name={h.name}
