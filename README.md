@@ -58,8 +58,14 @@ The **main** only has README.md and .gitignore.  Only make changes to these to f
 - Add a Favorites Page
 	- Make this the default route
 	- Using Context, create a centralized list of favorite heroes and hated villains
-- Create a Progress bar or Spinner to display to the user the app is busy	
-	- Compare to **favorites-and-progress** branch
+	- Context should add to hero or villain to respective favorite list, remove a hero or villain, clear all heros or villains
+	- Favorites page should be able to remove a single hero or villain and be able to clear all heroes or villains
+	- Heros and Villains pages should be able to mark an individual as a favorite
+	- Compare to **favorites** branch
+- Update state for Heroes and Villains to use Redux, Move Favorites Context to Redux
+	- Compare to **with-redux** branch
+- Update Redux/Store to use Redux-toolkit
+	- Compare to **with-redux-tool-kit** branch
 	
 	
 - Testing...
