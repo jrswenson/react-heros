@@ -63,6 +63,11 @@ The **main** only has README.md and .gitignore.  Only make changes to these to f
 	- Heros and Villains pages should be able to mark an individual as a favorite
 	- Compare to **favorites** branch
 - Update state for Heroes and Villains to use Redux, Move Favorites Context to Redux
+	- Notice:
+		- Add hero to favorites
+		- From Favorites page, select hero and edit name and save
+		- After save, returns to list not favorites.  After editing, the screen should return to the page the hero/villain was selected from
+		- After an edit, the changes should be visible on favorites and list page
 	- Compare to **with-redux** branch
 - Update Redux/Store to use Redux-toolkit
 	- Compare to **with-redux-tool-kit** branch
