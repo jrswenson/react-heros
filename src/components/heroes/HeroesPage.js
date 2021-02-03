@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { FavoritesContext } from "../../context/FavoritesProvider";
 
 function HeroesPage() {
-  const [heroes, setHeroes] = useState([]);
   const { favoriteHeroes, addHero, removeHero } = useContext(FavoritesContext);
 
   useEffect(() => {
