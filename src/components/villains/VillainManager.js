@@ -21,7 +21,7 @@ function VillainManager(props) {
       const foundVillain = villains.find((h) => h.id === id);
       if (foundVillain) setVillain(foundVillain);
     }
-  }, [villains.length, props.match.params.id]);
+  }, [villains, props.match.params.id]);
 
   function handleSave(event) {
     event.preventDefault();

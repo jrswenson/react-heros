@@ -17,7 +17,7 @@ function HeroManager(props) {
       const foundHero = heroes.find((h) => h.id === id);
       if (foundHero) setHero(foundHero);
     }
-  }, [heroes.length, props.match.params.id]);
+  }, [heroes, props.match.params.id]);
 
   function handleSave(event) {
     event.preventDefault();

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 function VillainList({
-  heroes = [],
+  villains = [],
   onDelete,
   favorites,
   addFavorite,
@@ -18,8 +18,8 @@ function VillainList({
         </tr>
       </thead>
       <tbody>
-        {heroes.map((hero) =>
-          row({ ...hero, onDelete, favorites, addFavorite, removeFavorite })
+        {villains.map((villain) =>
+          row({ ...villain, onDelete, favorites, addFavorite, removeFavorite })
         )}
       </tbody>
     </table>
