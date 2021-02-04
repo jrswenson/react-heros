@@ -1,29 +1,29 @@
 import { useEffect, useState } from "react";
 import HeroForm from "./HeroForm";
-import * as heroService from "../../services/heroService";
+import { addOrUpdateHero, loadHeroes } from "../../store/actions/heroActions";
+import { connect } from "react-redux";
 
-function HeroManager(props) {
-  const [hero, setHero] = useState({ id: null, name: "", description: "" });
-  const [heroes, setHeroes] = useState([]);
+function HeroManager({
+  heroes,
+  loadHeroes,
+  addOrUpdateHero,
+  history,
+  ...props
+}) {
+  const [hero, setHero] = useState({ ...props.hero });
 
   useEffect(() => {
-    const id = props.match.params.id;
-
-    if (id) {
-      if (heroes.length === 0) {
-        heroService.getHeroes().then((heroes) => setHeroes(heroes));
-      }
-
-      const foundHero = heroes.find((h) => h.id === id);
-      if (foundHero) setHero(foundHero);
+    if (heroes.length === 0) {
+      loadHeroes();
+    } else {
+      setHero({ ...props.hero });
     }
-  }, [heroes.length, props.match.params.id]);
+  }, [props.hero]);
 
   function handleSave(event) {
     event.preventDefault();
-
-    heroService.saveHero(hero).then(() => {
-      props.history.push("/heroes");
+    addOrUpdateHero(hero).then(() => {
+      history.push("/heroes");
     });
   }
 
@@ -35,4 +35,26 @@ function HeroManager(props) {
   return <HeroForm hero={hero} onChange={handleChange} onSubmit={handleSave} />;
 }
 
-export default HeroManager;
+function getHeroById(heroes, id) {
+  return heroes.find((h) => h.id === id) || null;
+}
+
+function mapStateToProps(state, ownProps) {
+  const { heroes } = state;
+  const id = ownProps.match.params.id;
+  const hero =
+    id && heroes.length > 0
+      ? getHeroById(heroes, id)
+      : { id: null, name: "", description: "" };
+  return {
+    hero,
+    heroes,
+  };
+}
+
+const mapDispatchToProps = {
+  loadHeroes,
+  addOrUpdateHero,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(HeroManager);

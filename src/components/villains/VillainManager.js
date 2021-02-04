@@ -1,34 +1,32 @@
 import { useEffect, useState } from "react";
 import VillainForm from "./VillainForm";
-import * as villainService from "../../services/villainService";
+import { connect } from "react-redux";
+import {
+  addOrUpdateVillain,
+  loadVillains,
+} from "../../store/actions/villainActions";
 
-function VillainManager(props) {
-  const [villain, setVillain] = useState({
-    id: null,
-    name: "",
-    description: "",
-  });
-  const [villains, setVillains] = useState([]);
+function VillainManager({
+  villains,
+  loadVillains,
+  addOrUpdateVillain,
+  history,
+  ...props
+}) {
+  const [villain, setVillain] = useState({ ...props.villain });
 
   useEffect(() => {
-    const id = props.match.params.id;
-
-    if (id) {
-      if (villains.length === 0) {
-        villainService.getVillains().then((villains) => setVillains(villains));
-      }
-
-      const foundVillain = villains.find((h) => h.id === id);
-      if (foundVillain) setVillain(foundVillain);
+    if (villains.length === 0) {
+      loadVillains();
+    } else {
+      setVillain({ ...props.villain });
     }
-  }, [villains.length, props.match.params.id]);
+  }, [props.villain]);
 
   function handleSave(event) {
     event.preventDefault();
 
-    villainService.saveVillain(villain).then(() => {
-      props.history.push("/villains");
-    });
+    addOrUpdateVillain(villain);
   }
 
   function handleChange({ target }) {
@@ -45,4 +43,26 @@ function VillainManager(props) {
   );
 }
 
-export default VillainManager;
+function getVillainById(villains, id) {
+  return villains.find((h) => h.id === id) || null;
+}
+
+function mapStateToProps(state, ownProps) {
+  const { villains } = state;
+  const id = ownProps.match.params.id;
+  const villain =
+    id && villains.length > 0
+      ? getVillainById(villains, id)
+      : { id: null, name: "", description: "" };
+  return {
+    villain,
+    villains,
+  };
+}
+
+const mapDispatchToProps = {
+  loadVillains,
+  addOrUpdateVillain,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(VillainManager);

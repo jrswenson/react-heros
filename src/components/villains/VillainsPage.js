@@ -1,40 +1,54 @@
-import { useContext, useEffect, useState } from "react";
-import { deleteVillain, getVillains } from "../../services/villainService";
+import { useContext, useEffect } from "react";
+import VillainList from "./VillainList";
 import { Link } from "react-router-dom";
-import HeroList from "../heroes/HeroList";
 import { FavoritesContext } from "../../context/FavoritesProvider";
+import { connect } from "react-redux";
+import {
+  loadVillains,
+  removeVillain,
+} from "../../store/actions/villainActions";
 
-function VillainsPage() {
-  const [villains, setVillains] = useState([]);
-  const { favoriteVillains, addVillain, removeVillain } = useContext(
-    FavoritesContext
-  );
+function VillainsPage({ villains, loadVillains, removeVillain }) {
+  const {
+    favoriteVillains,
+    addVillain,
+    removeVillain: removeVillainFavorite,
+  } = useContext(FavoritesContext);
 
   useEffect(() => {
     if (villains.length === 0) {
-      getVillains().then((villains) => setVillains(villains));
+      loadVillains();
     }
-  });
+  }, [villains, loadVillains]);
 
   function handleDelete(id) {
-    deleteVillain(id).then(() => {
-      getVillains().then((villains) => setVillains(villains));
-    });
+    removeVillain(id);
   }
 
   return (
     <>
       <h1>Villains</h1>
       <Link to="/villain">Add Villain</Link>
-      <HeroList
-        heroes={villains}
+      <VillainList
+        villains={villains}
         onDelete={handleDelete}
         favorites={favoriteVillains}
         addFavorite={addVillain}
-        removeFavorite={removeVillain}
+        removeFavorite={removeVillainFavorite}
       />
     </>
   );
 }
 
-export default VillainsPage;
+function mapStateToProps(state) {
+  return {
+    villains: state.villains,
+  };
+}
+
+const mapDispatchToProps = {
+  loadVillains,
+  removeVillain,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(VillainsPage);

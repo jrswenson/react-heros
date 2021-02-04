@@ -1,22 +1,26 @@
-import { useContext, useEffect, useState } from "react";
-import { getHeroes, deleteHero } from "../../services/heroService";
+import { useContext, useEffect } from "react";
 import HeroList from "./HeroList";
 import { Link } from "react-router-dom";
 import { FavoritesContext } from "../../context/FavoritesProvider";
+import { connect } from "react-redux";
+import { loadHeroes, removeHero } from "../../store/actions/heroActions";
 
-function HeroesPage() {
-  const { favoriteHeroes, addHero, removeHero } = useContext(FavoritesContext);
+function HeroesPage(props) {
+  const { heroes, loadHeroes, removeHero } = props;
+  const {
+    favoriteHeroes,
+    addHero,
+    removeHero: removeHeroFavorite,
+  } = useContext(FavoritesContext);
 
   useEffect(() => {
     if (heroes.length === 0) {
-      getHeroes().then((heroes) => setHeroes(heroes));
+      loadHeroes();
     }
-  }, [heroes.length]);
+  }, [heroes, loadHeroes]);
 
   function handleDelete(id) {
-    deleteHero(id).then(() => {
-      getHeroes().then((heroes) => setHeroes(heroes));
-    });
+    removeHero(id);
   }
 
   return (
@@ -28,10 +32,21 @@ function HeroesPage() {
         favorites={favoriteHeroes}
         onDelete={handleDelete}
         addFavorite={addHero}
-        removeFavorite={removeHero}
+        removeFavorite={removeHeroFavorite}
       />
     </>
   );
 }
 
-export default HeroesPage;
+function mapStateToProps(state) {
+  return {
+    heroes: state.heroes,
+  };
+}
+
+const mapDispatchToProps = {
+  loadHeroes,
+  removeHero,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(HeroesPage);
