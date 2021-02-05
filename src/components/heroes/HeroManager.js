@@ -18,12 +18,12 @@ function HeroManager({
     } else {
       setHero({ ...props.hero });
     }
-  }, [props.hero]);
+  }, [props.hero, loadHeroes, heroes.length]);
 
   function handleSave(event) {
     event.preventDefault();
     addOrUpdateHero(hero).then(() => {
-      history.push("/heroes");
+      history.goBack();
     });
   }
 

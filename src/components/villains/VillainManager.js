@@ -21,12 +21,14 @@ function VillainManager({
     } else {
       setVillain({ ...props.villain });
     }
-  }, [props.villain]);
+  }, [props.villain, loadVillains, villains.length]);
 
   function handleSave(event) {
     event.preventDefault();
 
-    addOrUpdateVillain(villain);
+    addOrUpdateVillain(villain).then(() => {
+      history.goBack();
+    });
   }
 
   function handleChange({ target }) {

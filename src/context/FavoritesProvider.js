@@ -1,38 +1,97 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  addLocalHero,
+  addLocalVillain,
+  clearLocalHeroes,
+  clearLocalVillains,
+  getLocalHeroes,
+  getLocalVillains,
+  removeLocalHero,
+  removeLocalVillain,
+} from "../services/favoriteService";
+import { loadVillains } from "../store/actions/villainActions";
+import { loadHeroes } from "../store/actions/heroActions";
 
 export const FavoritesContext = createContext();
 
 export const FavoritesProvider = ({ children }) => {
+  const dispatch = useDispatch();
+  const { heroes, villains } = useSelector((state) => state);
+  const [favoriteHeroIds, setFavoriteHeroIds] = useState();
+  const [favoriteVillainIds, setFavoriteVillainIds] = useState();
   const [favoriteHeroes, setFavoriteHeroes] = useState([]);
   const [favoriteVillains, setFavoriteVillains] = useState([]);
+
+  useEffect(() => {
+    if (!favoriteHeroIds) {
+      getLocalHeroes().then((ids) => setFavoriteHeroIds(ids));
+    }
+  }, [favoriteHeroIds]);
+
+  useEffect(() => {
+    if (!favoriteVillainIds) {
+      getLocalVillains().then((ids) => setFavoriteVillainIds(ids));
+    }
+  }, [favoriteVillainIds]);
+
+  useEffect(() => {
+    if (heroes.length === 0) {
+      dispatch(loadHeroes());
+    } else if (heroes.length > 0) {
+      setFavoriteHeroes(heroes.filter((f) => favoriteHeroIds.includes(f.id)));
+    }
+  }, [heroes, favoriteHeroIds, dispatch]);
+
+  useEffect(() => {
+    if (villains.length === 0) {
+      dispatch(loadVillains());
+    } else if (villains.length > 0) {
+      setFavoriteVillains(
+        villains.filter((f) => favoriteVillainIds.includes(f.id))
+      );
+    }
+  }, [villains, favoriteVillainIds, dispatch]);
 
   const addHero = (hero) => {
     if (!hero) return;
 
-    if (!favoriteHeroes.find((h) => h.id === hero.id)) {
-      setFavoriteHeroes([...favoriteHeroes, hero]);
-    }
+    addLocalHero(hero.id).then(() => {
+      setFavoriteHeroIds([...favoriteHeroIds, hero.id]);
+    });
   };
 
   const removeHero = (id) => {
-    setFavoriteHeroes(favoriteHeroes.filter((h) => h.id !== id));
+    removeLocalHero(id).then(() => {
+      setFavoriteHeroIds(favoriteHeroIds.filter((f) => f !== id));
+    });
   };
 
-  const clearHeroes = () => setFavoriteHeroes([]);
+  const clearHeroes = () => {
+    clearLocalHeroes().then(() => {
+      setFavoriteHeroIds([]);
+    });
+  };
 
   const addVillain = (villain) => {
     if (!villain) return;
 
-    if (!favoriteVillains.find((v) => v.id === villain.id)) {
-      setFavoriteVillains([...favoriteVillains, villain]);
-    }
+    addLocalVillain(villain.id).then(() => {
+      setFavoriteVillainIds([...favoriteVillainIds, villain.id]);
+    });
   };
 
   const removeVillain = (id) => {
-    setFavoriteVillains(favoriteVillains.filter((v) => v.id !== id));
+    removeLocalVillain(id).then(() => {
+      setFavoriteVillainIds(favoriteVillainIds.filter((f) => f !== id));
+    });
   };
 
-  const clearVillains = () => setFavoriteVillains([]);
+  const clearVillains = () => {
+    clearLocalVillains().then(() => {
+      setFavoriteVillainIds([]);
+    });
+  };
 
   return (
     <FavoritesContext.Provider
