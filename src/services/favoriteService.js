@@ -4,7 +4,6 @@ let localVillains;
 function addToLocalStorage(name, value) {
   const json = JSON.stringify(value);
   localStorage.setItem(name, json);
-  console.log(name, json);
 }
 
 export function getLocalHeroes() {
@@ -56,7 +55,7 @@ export function removeLocalHero(id) {
       reject("Favorite heroes could not be parsed");
     } else {
       try {
-        localHeroes = localHeroes.filter((f) => f.id !== id);
+        localHeroes = localHeroes.filter((f) => f !== id);
         addToLocalStorage("favoriteHeroes", localHeroes);
         resolve(id);
       } catch (e) {
@@ -117,7 +116,7 @@ export function removeLocalVillain(id) {
       reject("Favorite villains could not be parsed");
     } else {
       try {
-        localVillains = localVillains.filter((f) => f.id !== id);
+        localVillains = localVillains.filter((f) => f !== id);
         addToLocalStorage("favoriteVillains", localVillains);
         resolve(id);
       } catch (e) {
