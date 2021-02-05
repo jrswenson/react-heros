@@ -1,38 +1,65 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
+import * as favService from "../services/favoriteService";
 
 export const FavoritesContext = createContext();
 
 export const FavoritesProvider = ({ children }) => {
-  const [favoriteHeroes, setFavoriteHeroes] = useState([]);
-  const [favoriteVillains, setFavoriteVillains] = useState([]);
+  const [favoriteHeroes, setFavoriteHeroes] = useState();
+  const [favoriteVillains, setFavoriteVillains] = useState();
+
+  useEffect(() => {
+    if (!favoriteHeroes) {
+      favService.getLocalHeroes().then((heroes) => setFavoriteHeroes(heroes));
+    }
+  }, [favoriteHeroes]);
+
+  useEffect(() => {
+    if (!favoriteVillains) {
+      favService
+        .getLocalVillains()
+        .then((villains) => setFavoriteVillains(villains));
+    }
+  }, [favoriteVillains]);
 
   const addHero = (hero) => {
     if (!hero) return;
 
-    if (!favoriteHeroes.find((h) => h.id === hero.id)) {
+    favService.addLocalHero(hero).then(() => {
       setFavoriteHeroes([...favoriteHeroes, hero]);
-    }
+    });
   };
 
   const removeHero = (id) => {
-    setFavoriteHeroes(favoriteHeroes.filter((h) => h.id !== id));
+    favService.removeLocalHero(id).then(() => {
+      setFavoriteHeroes(favoriteHeroes.filter((f) => f.id !== id));
+    });
   };
 
-  const clearHeroes = () => setFavoriteHeroes([]);
+  const clearHeroes = () => {
+    favService.clearLocalHeroes().then(() => {
+      setFavoriteHeroes([]);
+    });
+  };
 
   const addVillain = (villain) => {
     if (!villain) return;
 
-    if (!favoriteVillains.find((v) => v.id === villain.id)) {
+    favService.addLocalVillain(villain).then(() => {
       setFavoriteVillains([...favoriteVillains, villain]);
-    }
+    });
   };
 
   const removeVillain = (id) => {
-    setFavoriteVillains(favoriteVillains.filter((v) => v.id !== id));
+    favService.removeLocalVillain(id).then(() => {
+      setFavoriteVillains(favoriteVillains.filter((f) => f.id !== id));
+    });
   };
 
-  const clearVillains = () => setFavoriteVillains([]);
+  const clearVillains = () => {
+    favService.clearLocalVillains().then(() => {
+      setFavoriteVillains([]);
+    });
+  };
 
   return (
     <FavoritesContext.Provider

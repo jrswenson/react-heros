@@ -1,6 +1,6 @@
 import FavoriteItem from "./FavoriteItem";
 
-const FavoriteList = ({ listName, listUrl, favorites, remove, clear }) => {
+const FavoriteList = ({ listName, listUrl, favorites = [], remove, clear }) => {
   return (
     <>
       <span>
