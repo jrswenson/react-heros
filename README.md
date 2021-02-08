@@ -57,17 +57,22 @@ The **main** only has README.md and .gitignore.  Only make changes to these to f
 	- Compare to **CRUD_Heroes_Villains** branch
 - Add a Favorites Page
 	- Make this the default route
-	- Using Context, create a centralized list of favorite heroes and hated villains
-	- Context should add to hero or villain to respective favorite list, remove a hero or villain, clear all heros or villains
+	- Create a favorites service that will get a list, add to the list, remove from the list and clear the list. (For both Heroes and Villains)
+		- To better emulate an actual service, make functions async or return a promise.
+	- Using the service above, create a Context that will manage favorite heroes and hated villains
+	- Context should expose the features of the favorites service(s)
 	- Favorites page should be able to remove a single hero or villain and be able to clear all heroes or villains
 	- Heros and Villains pages should be able to mark an individual as a favorite
 	- Compare to **favorites** branch
-- Update state for Heroes and Villains to use Redux, Move Favorites Context to Redux
+- Update state for Heroes and Villains to use Redux
 	- Notice:
 		- Add hero to favorites
 		- From Favorites page, select hero and edit name and save
 		- After save, returns to list not favorites.  After editing, the screen should return to the page the hero/villain was selected from
 		- After an edit, the changes should be visible on favorites and list page
+	- After editing a Hero or Villain, if the individual is a favorite, the change should be visible on the Favorites page too.
+		- Update the favorites page to use the Heroes and Villains state and update the favorites list if/when either of those change.
+	- Update Hero and Villain to "GoBack" to the page the edit was initiated from
 	- Compare to **with-redux** branch
 - Update Redux/Store to use Redux-toolkit
 	- Compare to **with-redux-tool-kit** branch
