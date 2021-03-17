@@ -1,7 +1,7 @@
 # react-heroes
 A repository to practice React
 
-The **main** only has README.md and .gitignore.  Only make changes to these to files on the **main** branch and do not add new files to *main*
+The **main** branch only has README.md and .gitignore.  Only make changes to these to files on the **main** branch and do not add new files to *main*
 
 ## Using Prop Drilling
 
@@ -26,7 +26,7 @@ The **main** only has README.md and .gitignore.  Only make changes to these to f
 - Create project
 	- npx create-react-app {project_name}
 	- npx create-react-app . (This will create the React project in the current directory. This is helpful if you've already created the directory and initialized it as a Git repo)
-- Create and configure API and Service to call API (Use json-server or actual REST server)
+- Create an API and a Service to call the API (Use json-server or actual REST server)
 	- Heros (GET, POST/PUT, DELETE)
 		- Heros have an ID, Name, and Description 
 	- Villains (GET, POST/PUT, DELETE)
